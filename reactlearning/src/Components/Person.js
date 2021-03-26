@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 
-function Person() {
+function Person(props) {
     return (
-        <p>Nmae is zero</p>
+        <p>My name is {props.name}</p>
     )
 }
 

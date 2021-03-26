@@ -4,12 +4,26 @@ import logo from './logo.svg';
 import './App.css';
 
 
-//rytruryury
+
 class App extends Component {
-    state = {}
+    state = {
+        name : ["Armin" , "Yazish" , "Navroz"]
+    }
+
+
+    buttonHandler = () => {
+        this.setState({
+            name  : ["navroz"]
+        })
+    }
+
     render() {
         return (
-           <Person/>
+            <div>
+                <Person name={this.state.name[0]}/>
+                <button onClick={this.buttonHandler}> button</button>
+            </div>
+            
         )
     }
 }
