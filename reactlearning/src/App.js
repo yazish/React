@@ -10,17 +10,24 @@ class App extends Component {
     }
 
 
-    buttonHandler = () => {
-        this.setState({
-            name  : ["navroz"]
-        })
+    switchbuttonHandler = () => {
+        if (this.state.name[0] === "Armin" ) {
+            this.setState({
+                name  : ["navroz"]
+            })
+        } else {
+            this.setState({
+                name : ["Armin"]
+            })
+        }
+
     }
 
     render() {
         return (
             <div>
                 <Person name={this.state.name[0]}/>
-                <button onClick={this.buttonHandler}> button</button>
+                <button onClick={this.switchbuttonHandler}> button</button>
             </div>
             
         )
