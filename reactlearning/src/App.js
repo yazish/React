@@ -6,7 +6,8 @@ import './App.css';
 
 class App extends Component {
     state = {
-        name : ["Armin" , "Yazish" , "Navroz"]
+        name : ["Armin" , "Yazish" , "Navroz"],
+        isShown : true
     }
 
 
@@ -20,14 +21,26 @@ class App extends Component {
                 name : ["Armin"]
             })
         }
+    }
 
+    toggleHandler = () => {
+        if (this.state.isShown) {
+            this.setState({
+                isShown :false
+            })
+        } else { 
+            this.setState({
+                isShown : true
+            })
+        }
     }
 
     render() {
+
         return (
             <div>
-                <Person name={this.state.name[0]}/>
-                <button onClick={this.switchbuttonHandler}> button</button>
+                {this.state.isShown ? <Person name={this.state.name[0]}></Person> : null}
+                <button onClick={this.toggleHandler}> button </button>
             </div>
             
         )
