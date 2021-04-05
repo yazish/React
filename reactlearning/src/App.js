@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Person from "../src/Components/Person.js"
-import './App.css';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Radium from "radium";
+import styled from "styled-components"
 
 class App extends Component {
     state = {
@@ -24,6 +24,7 @@ class App extends Component {
     }
 
     toggleHandler = () => {
+        
         if (this.state.isShown) {
             this.setState({
                 isShown :false
@@ -35,19 +36,44 @@ class App extends Component {
         }
     }
 
+    deleteNameHandler(index) {
+        let names = this.state.name.slice();
+        names.splice(index,1)
+        console.log(names , index );
+        this.setState({
+            name : names
+        })
+    }
+
     render() {
 
+        let style = {
+            backgroundColor : "blue"
+        }
+
+        if (this.state.isShown === true) {
+            style.backgroundColor = "red"
+        }
+
+
+        
+
         return (
-            <div>
-                {this.state.isShown ? <Person name={this.state.name[0]}></Person> : null}
-                <button onClick={this.toggleHandler}> button </button>
-            </div>
+                <div>
+                    {this.state.name.map((name , index) => {
+                        return <Person name={name} onClick={() => {this.deleteNameHandler(index)}}></Person>
+                    })}
+                    <button onClick={this.toggleHandler}  className='btn btn-primary' style={{':hover' : {
+                        color : 'red'
+                    }}} > button </button>
+                </div>
             
         )
     }
 }
 
-export default App;
+export default Radium(App);
+
 
 
 // comment from the new machine

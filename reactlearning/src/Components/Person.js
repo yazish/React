@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import styled from 'styled-components'
 
+const StylePara = styled.div`{color : green}`
 
 function Person(props) {
     return (
-        <p>My name is {props.name}</p>
+        <StylePara onClick={props.onClick}>My name is {props.name}</StylePara>
     )
 }
 
