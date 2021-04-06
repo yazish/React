@@ -3,6 +3,7 @@ import Person from "../src/Components/Person.js"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Radium from "radium";
 import styled from "styled-components"
+import Persons from "./Components/Persons.js"
 
 class App extends Component {
     state = {
@@ -60,19 +61,16 @@ class App extends Component {
 
         return (
                 <div>
-                    {this.state.name.map((name , index) => {
-                        return <Person name={name} onClick={() => {this.deleteNameHandler(index)}}></Person>
-                    })}
-                    <button onClick={this.toggleHandler}  className='btn btn-primary' style={{':hover' : {
-                        color : 'red'
-                    }}} > button </button>
+                    <Persons names={this.state.name} onClick={this.deleteNameHandler.bind(this)}></Persons>
+
+                    <button onClick={this.toggleHandler}  className='btn btn-primary' style={{color : 'red'}}  > button </button>
                 </div>
             
         )
     }
 }
 
-export default Radium(App);
+export default App
 
 
 
