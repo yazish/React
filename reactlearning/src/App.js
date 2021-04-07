@@ -46,6 +46,10 @@ class App extends Component {
         })
     }
 
+    componentWillUnmount() {
+        alert("the component is going to be deleted !")
+    }
+
     render() {
 
         let style = {
